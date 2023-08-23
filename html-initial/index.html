@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flux</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img id="fluxImage" src="./assets/Flux_Light.png" />
+    </div>
+    <script>
+      // Detect if dark mode is enabled
+      const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+      // Function to update image and background based on the theme
+      function updateTheme() {
+        const imgElement = document.getElementById("fluxImage");
+        const bodyElement = document.body;
+
+        if (darkModeQuery.matches) {
+          imgElement.src = "./assets/Flux_Dark.png";
+          bodyElement.style.backgroundColor = "#404040";
+        } else {
+          imgElement.src = "./assets/Flux_Light.png";
+          bodyElement.style.backgroundColor = "#FFFFFF";
+        }
+      }
+
+      // Update theme initially
+      updateTheme();
+
+      // Update theme when preference changes
+      darkModeQuery.addEventListener("change", updateTheme);
+    </script>
+  </body>
+</html>
